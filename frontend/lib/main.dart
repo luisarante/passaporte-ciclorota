@@ -1,8 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:firebase_core/firebase_core.dart'; // Importe
+import 'firebase_options.dart'; // Importe
 
-void main() {
+void main() async {
+  // Transforme em async
+  WidgetsFlutterBinding.ensureInitialized(); // Adicione esta linha
+  await Firebase.initializeApp(
+    // Adicione este bloco
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(const MyApp());
 }
+
+// void main() {
+//   runApp(const MyApp());
+// }
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
