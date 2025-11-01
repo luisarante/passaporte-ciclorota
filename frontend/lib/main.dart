@@ -1,17 +1,20 @@
+// Importe os pacotes que você precisa no topo
 import 'package:flutter/material.dart';
-import 'package:firebase_core/firebase_core.dart'; // Importe
-import 'firebase_options.dart'; // Importe
+import 'package:firebase_core/firebase_core.dart'; // Importa o Firebase Core
+import 'firebase_options.dart'; // Importa suas chaves secretas
 
+// Transforma a 'main' em uma função assíncrona
 void main() async {
-  // Transforme em async
-  WidgetsFlutterBinding.ensureInitialized(); // Adicione esta linha
-  await Firebase.initializeApp(
-    // Adicione este bloco
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
+  // Garante que o Flutter esteja pronto antes de chamar o Firebase
+  WidgetsFlutterBinding.ensureInitialized();
+
+  // Esta é a linha mais importante:
+  // Ela lê seu arquivo 'firebase_options.dart' e conecta seu app ao seu projeto
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+
+  // Agora, o app roda normalmente
   runApp(const MyApp());
 }
-
 // void main() {
 //   runApp(const MyApp());
 // }
